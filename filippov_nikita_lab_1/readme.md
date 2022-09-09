@@ -72,6 +72,7 @@
 [Картинка class_compare_2](results/class_compare_2.png?raw=true)
 
 Результат оценки качества модели:
+
 ![Картинка ckass_compare_output_2](results/class_compare_output_2.bmp?raw=true)
 
 ## Вывод:
