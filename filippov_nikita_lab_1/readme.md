@@ -38,13 +38,13 @@
 ![Картинка cо стартовыми данными 1](results/start_data_1.bmp?raw=true)
 
 Отображение созданных моделей по точкам:
-![Картинка point_compare_1](results/point_compare_1.jpg?raw=true)
+![Картинка point_compare_1](results/point_compare_1.png?raw=true)
 
 Результат оценки качества модели:
-![Картинка point_compare_output_1](results/point_compare_output_1.jpg?raw=true)
+![Картинка point_compare_output_1](results/point_compare_output_1.png?raw=true)
 
 Отображение созданных моделей по классам:
-[Картинка class_compare_1](results/class_compare_1.jpg?raw=true)
+[Картинка class_compare_1](results/class_compare_1.png?raw=true)
 
 Результат оценки качества модели:
 ![Картинка point_compare_output_1](results/point_compare_output_1.bmp?raw=true)
@@ -54,13 +54,13 @@
 ![Картинка cо стартовыми данными 2](results/start_data_2.bmp?raw=true)
 
 Отображение созданных моделей по точкам:
-![Картинка point_compare_2](results/point_compare_2.jpg?raw=true)
+![Картинка point_compare_2](results/point_compare_2.png?raw=true)
 
 Результат оценки качества модели:
-![Картинка point_compare_output_2](results/point_compare_output_2.jpg?raw=true)
+![Картинка point_compare_output_2](results/point_compare_output_2.png?raw=true)
 
 Отображение созданных моделей по классам:
-[Картинка class_compare_2](results/class_compare_2.jpg?raw=true)
+[Картинка class_compare_2](results/class_compare_2.png?raw=true)
 
 Результат оценки качества модели:
 ![Картинка point_compare_output_2](results/point_compare_output_2.bmp?raw=true)
