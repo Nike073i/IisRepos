@@ -3,7 +3,7 @@ N_SAMPLES = 500
 N_FEATURES = 2
 N_REDUNDANT = 0
 N_INFORMATIVE = 2
-CF_RANDOM_STATE = 2  # Генерация одинаковых псевдослучайных чисел
+CF_RANDOM_STATE = None  # Генерация одинаковых псевдослучайных чисел
 N_CLUSTERS_PER_CLASS = 1
 
 # Значения разделения данных на обучающие и проверяющие (train_test_split)
