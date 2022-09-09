@@ -47,7 +47,6 @@
 ![Картинка point_compare_output_1](results/point_compare_output_1.bmp?raw=true)
 
 Отображение созданных моделей по классам:
-
 [Картинка class_compare_1](results/class_compare_1.png?raw=true)
 
 Результат оценки качества модели:
@@ -68,7 +67,6 @@
 ![Картинка point_compare_output_2](results/point_compare_output_2.bmp?raw=true)
 
 Отображение созданных моделей по классам:
-
 [Картинка class_compare_2](results/class_compare_2.png?raw=true)
 
 Результат оценки качества модели:
