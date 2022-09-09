@@ -9,8 +9,8 @@
 * по созданным моделям построить графики, отобразить качество и сравнить полученные результаты.
 
 ## Установка и запуск:
-* устанавлием модуль Scikit-learn : pip install numpy
-* устанавлием модуль MatPlotlib : pip instal matplotlib
+* устанавлием модуль Scikit-learn : `pip install numpy`
+* устанавлием модуль MatPlotlib : `pip instal matplotlib`
 * Запускаем скрипт main: python main.py
 
 ## Описание используемых технологий:
