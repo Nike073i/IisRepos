@@ -30,7 +30,8 @@ def create_model(model_type, x, y):
 
 
 def compare_point_predict():
-    x_train, x_test, y_train, y_test = train_test_split(x_points, y_points, test_size=TEST_SIZE)
+    x_train, x_test, y_train, y_test = train_test_split(x_points, y_points, test_size=TEST_SIZE,
+                                                        random_state=TRAIN_RANDOM_STATE)
     linear_point_model = create_model('linear', x_train, y_train)
     ridge_point_model = create_model('ridge', x_train, y_train)
     colors = ListedColormap(['#FF0000', '#0000FF'])
@@ -55,7 +56,8 @@ def paint_predict_class_graphic(n, m, index, title, data, colors):
 
 
 def compare_class_predict():
-    point_train, point_test, class_train, class_test = train_test_split(data_points, data_classes, test_size=TEST_SIZE)
+    point_train, point_test, class_train, class_test = train_test_split(data_points, data_classes, test_size=TEST_SIZE,
+                                                                        random_state=TRAIN_RANDOM_STATE)
     linear_class_model = create_model('linear', point_train, class_train)
     ridge_class_model = create_model('ridge', point_train, class_train)
     perceptron_model = create_model('perceptron', point_train, class_train)

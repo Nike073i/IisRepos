@@ -8,7 +8,7 @@ N_CLUSTERS_PER_CLASS = 1
 
 # Значения разделения данных на обучающие и проверяющие (train_test_split)
 TEST_SIZE = 0.05
-TRAIN_RANDOM_STATE = 1
+TRAIN_RANDOM_STATE = None
 
 # Значения гребневой полиномиальной регресии
 RIDGE_DEGREE = 4
