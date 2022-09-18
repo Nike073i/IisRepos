@@ -40,7 +40,7 @@ def get_mean_ranks(dict_f_ranks):
 
 
 X, Y = generate_data(COUNT_ROW, COUNT_FEATURES, COUNT_DEPENDENT)
-feature_names = ["x%s" % (i + 1) for i in range(0, COUNT_FEATURES)]
+feature_names = ["x%s" % (i + 1) for i in range(COUNT_FEATURES)]
 
 # Лассо
 lasso = Lasso(alpha=LASSO_ALPHA)
