@@ -34,9 +34,9 @@ def prepare_data(data):
     return m_data
 
 
-def print_classifier_info(feature_importances):
+def print_classifier_info(feature_importances, precision):
     feature_names = FEATURE_COLUMNS
-    scores = map(lambda score: round(score, 2), feature_importances)
+    scores = map(lambda score: round(score, precision), feature_importances)
     print(dict(zip(feature_names, scores)))
 
 
@@ -51,14 +51,14 @@ if __name__ == "__main__":
 
     classifier_tree = DecisionTreeClassifier(random_state=DTC_RANDOM_STATE)
 
-    x = cars_data[['price', 'power', 'engineDisplacement', 'mileage']]
-    y = cars_data.drop(['price', 'power', 'engineDisplacement', 'mileage'], axis=1)
+    x = cars_data[FEATURE_COLUMNS]
+    y = cars_data.drop(FEATURE_COLUMNS, axis=1)
 
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=TRAIN_TEST_SIZE, random_state=TRAIN_RANDOM_STATE)
 
     classifier_tree.fit(x_train, y_train)
     print(classifier_tree.score(x_test, y_test))
-    print_classifier_info(classifier_tree.feature_importances_)
+    print_classifier_info(classifier_tree.feature_importances_, 2)
 
     app.run(debug=False)
 
