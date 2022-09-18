@@ -25,9 +25,10 @@ def prepare_data(data):
     le.fit(m_data['Cabin'])
     m_data['Cabin'] = le.transform(m_data['Cabin'])
 
-    # OHE для точки отправления
-    prepared_data = pd.get_dummies(m_data, columns=['Embarked'], prefix='embarked')
-    return prepared_data
+    # # OHE для точки отправления
+    m_data = pd.get_dummies(m_data, columns=['Embarked'], prefix='embarked')
+
+    return m_data
 
 
 def print_classifier_info(feature_importances):
