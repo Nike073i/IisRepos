@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат дерева решений</title>
+    <style>
+        table {
+            font-size: 20pt;
+            border: 2px solid grey;
+            background: lightyellow
+        }
+        tr,td,th {
+            padding: 10px 20px;
+            border: 2px solid grey;
+        }
+    </style>
+</head>
+<body>
+<h2> Оценка качества модели - {{ data.score }}</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Признак</th>
+        <th>Оценка</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for feature, score in data.feature_importances.items() %}
+    <tr>
+        <td> {{ feature }}</td>
+        <td> {{ score }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

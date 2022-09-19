@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача классификации</title>
+</head>
+<body>
+<h3>Выявление наиболее важного признака, влияющего на тип коробки передач в автомобиле с помощью дерева решений.</h3>
+<form action="http://127.0.0.1:5000/get_classified" method="get">
+    <div aria-orientation="vertical">
+        <p>Размер тестовой выборки в долях:</p>
+        <label>
+            <input type="text" size="20" name="size" value="0.01">
+        </label>
+        <p>Точность результатов оценки признаков:</p>
+        <label>
+            <input type="text" size="20" name="precision" value="3">
+        </label>
+        <input type="submit" value="Результат">
+    </div>
+</form>
+</body>
+</html>
