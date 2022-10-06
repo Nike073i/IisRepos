@@ -13,19 +13,20 @@ def read_data(file_path, required_columns, index_col):
 
 
 def prepare_data(data):
+    print("До : ", len(data))
     # Выбрасываем строки с пустыми значениями
     m_data = data.dropna()
+    print("После : ", len(m_data))
 
-    # Числовое кодирование для трансмисии
+    # Числовое кодирование для бренда
     le = LabelEncoder()
-    le.fit(m_data['transmission'])
-    m_data['transmission'] = le.transform(m_data['transmission'])
+    le.fit(m_data['brand'])
+    m_data['brand'] = le.transform(m_data['brand'])
 
-    # OHE для трансмисии
-    # m_data = pd.get_dummies(m_data, columns=['transmission'], prefix='transmission')
-
-    # Убираем ЕИ у значений рабочего объема двигателя
-    m_data['engineDisplacement'] = m_data['engineDisplacement'].map(lambda ed: ed[:-4])
+    # Числовое кодирование для типа топлива
+    le = LabelEncoder()
+    le.fit(m_data['fuelType'])
+    m_data['fuelType'] = le.transform(m_data['fuelType'])
 
     return m_data
 
@@ -39,6 +40,7 @@ if __name__ == "__main__":
 
     app.run(debug=False)
 
+
 # Задачи по курсовой работе:
-# 1. (Нейронка и дерево решений) Выявление наиболее важного признака, влияющего на тип коробки передач в автомобиле с помощью дерева решений.
-# transmission от price, power и engineDisplacement (mileage для теста результата)
+# Выявление наиболее важного признака, влияющего на стоимость автомобиля,
+# на основе которого можно формировать стоимость страховки автомобиля.

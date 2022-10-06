@@ -13,4 +13,4 @@ def estimate(test_size, precision):
     classifier_tree.fit(x_train, y_train)
     test_score = classifier_tree.score(x_test, y_test)
     feature_scores = map(lambda score: round(score, precision), classifier_tree.feature_importances_)
-    return test_score, dict(zip(FEATURE_COLUMNS, feature_scores))
+    return round(test_score, precision), dict(zip(FEATURE_COLUMNS, feature_scores))

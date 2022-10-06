@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from config import *
 pd.options.mode.chained_assignment = None
@@ -47,5 +48,10 @@ if __name__ == '__main__':
     x = processed_data.drop(TARGET_COLUMN, axis=1)
     y = processed_data[TARGET_COLUMN]
 
-    classifier_tree.fit(x, y)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.8,
+                                                        random_state=None)
+    classifier_tree.fit(x_train, y_train)
     print_classifier_info(classifier_tree.feature_importances_)
+    print("Оценка качества - ", classifier_tree.score(x_test, y_test))
+
+
