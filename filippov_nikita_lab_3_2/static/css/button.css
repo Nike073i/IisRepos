@@ -1,0 +1,17 @@
+.btn {
+    border: 0;
+    text-decoration: none;
+    text-align: center;
+    color: rgb(213, 213, 213);;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgb(39, 135, 245);
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+    padding: 10pt;
+}
+
+.btn.btn-big{
+    line-height: 2;
+    font-size: 24pt;
+}

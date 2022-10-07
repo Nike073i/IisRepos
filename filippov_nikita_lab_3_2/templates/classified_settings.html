@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Задача классификации</title>
+    <link href="/css/button.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h3>Выявление наиболее важного признака, влияющего на стоимость автомобиля, на основе которого можно формировать стоимость страховки автомобиля.</h3>
-<form action="http://127.0.0.1:5000/get_classified" method="get">
+<form action="/classified" method="post">
     <div aria-orientation="vertical">
         <p>Размер тестовой выборки в долях:</p>
         <label>
-            <input type="text" size="20" name="size" value="0.01">
+            <input type="text" size="24" name="size" value="0.01">
         </label>
         <p>Точность результатов оценки признаков:</p>
         <label>
-            <input type="text" size="20" name="precision" value="3">
+            <input type="text" size="24" name="precision" value="3">
         </label>
-        <input type="submit" value="Результат">
+        <input class="btn " type="submit" value="Результат">
     </div>
 </form>
 </body>

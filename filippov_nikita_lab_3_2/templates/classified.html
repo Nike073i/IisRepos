@@ -3,21 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Результат дерева решений</title>
-    <style>
-        table {
-            font-size: 20pt;
-            border: 2px solid grey;
-            background: lightyellow
-        }
-        tr,td,th {
-            padding: 10px 20px;
-            border: 2px solid grey;
-        }
-    </style>
+    <link href="/css/table.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h2> Оценка качества модели - {{ data.score }}</h2>
-<table class="table">
+<table>
     <thead>
     <tr>
         <th>Признак</th>

@@ -1,0 +1,9 @@
+table {
+    font-size: 20pt;
+    border: 2px solid grey;
+    background: lightyellow
+}
+tr,td,th {
+    padding: 10px 20px;
+    border: 2px solid grey;
+}
