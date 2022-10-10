@@ -27,6 +27,17 @@ def prepare_data(data):
     le.fit(m_data['fuelType'])
     m_data['fuelType'] = le.transform(m_data['fuelType'])
 
+    # Генерация меток для цены
+    labels = []
+
+    for price in m_data['price']:
+        for label, max_price in PRICE_CLASSES.items():
+            if price < max_price:
+                labels.append(label)
+                break
+
+    m_data['price_label'] = labels
+
     return m_data
 
 
@@ -35,7 +46,8 @@ if __name__ == "__main__":
     cars_data = prepare_data(cars_data)
 
     classification.x = cars_data[FEATURE_COLUMNS]
-    classification.y = cars_data.drop(FEATURE_COLUMNS, axis=1)
+    classification.y = cars_data.drop(columns=FEATURE_COLUMNS + ['price_label'], axis=1)
+    classification.y_labels = cars_data.drop(columns=FEATURE_COLUMNS + TARGET_COLUMN, axis=1)
 
     app.run(debug=False)
 

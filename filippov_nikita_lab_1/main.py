@@ -10,7 +10,6 @@ from sklearn.preprocessing import PolynomialFeatures
 data_points, data_classes = make_classification(n_samples=N_SAMPLES, n_features=N_FEATURES,
                                                 n_redundant=N_REDUNDANT, n_informative=N_INFORMATIVE,
                                                 random_state=CF_RANDOM_STATE, n_clusters_per_class=N_CLUSTERS_PER_CLASS)
-
 x_points = data_points[:, 0].reshape(-1, 1)
 y_points = data_points[:, 1].reshape(-1, 1)
 sorted_x_points = sorted(x_points)
@@ -66,15 +65,18 @@ def compare_class_predict():
     plt.figure(figsize=(10, 10))
     paint_predict_class_graphic(2, 2, 1, 'Start data', data_classes, colors)
     paint_predict_class_graphic(2, 2, 2, 'Linear regression', linear_class_model.predict(data_points), colors)
-    print(linear_class_model.score(point_test, class_test), ' - Linear regression score')
+    print(abs(linear_class_model.score(point_test, class_test)), ' - Linear regression score test')
+    print(abs(linear_class_model.score(point_train, class_train)), ' - Linear regression score train')
     paint_predict_class_graphic(2, 2, 3, 'Perceptron', perceptron_model.predict(data_points), colors)
-    print(perceptron_model.score(point_test, class_test), ' - Perceptron score')
+    print(abs(perceptron_model.score(point_test, class_test)), ' - Perceptron score test')
+    print(abs(perceptron_model.score(point_train, class_train)), ' - Perceptron score train')
     paint_predict_class_graphic(2, 2, 4, 'Ridge 4-degree', ridge_class_model.predict(data_points), colors)
-    print(ridge_class_model.score(point_test, class_test), ' - Ridge regression score')
+    print(abs(ridge_class_model.score(point_test, class_test)), ' - Ridge regression score test')
+    print(abs(ridge_class_model.score(point_train, class_train)), ' - Ridge regression score train')
 
     plt.show()
 
 
 if __name__ == '__main__':
-    compare_point_predict()
+    #compare_point_predict()
     compare_class_predict()

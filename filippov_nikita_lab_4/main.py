@@ -21,7 +21,6 @@ if __name__ == "__main__":
     cars_data = read_data(FILE_PATH, CLUSTERING_FEATURES, DATA_N_ROWS)
     prepared_data = prepare_data(cars_data)
     lineage_matrix = cluster_analysis(prepared_data, CLUSTERING_METHOD)
-    flat_cluster = get_flat_cluster(lineage_matrix, FLAT_CLUSTER_NUMBER)
     print_dendrogram(lineage_matrix)
     plt.show()
 

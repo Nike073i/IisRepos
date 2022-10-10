@@ -23,9 +23,12 @@ def get_classified():
     try:
         test_size = float(request.form['size'])
         precision = int(request.form['precision'])
+        type_tree = request.form['type']
     except ValueError as e:
         return error(e, url_for('classified-settings'))
 
     # Проверка входных условий
-    score, feature_importances = classification.estimate(test_size, precision)
-    return render_template('classified.html', data=dict(score=score, feature_importances=feature_importances))
+    score, feature_importances = classification.estimate(test_size, precision, type_tree)
+    header = "Дерево классификации" if type_tree == "classifier" else "Дерево регресии"
+    return render_template('classified.html', data=dict(score=score, feature_importances=feature_importances,
+                                                        header=header))
