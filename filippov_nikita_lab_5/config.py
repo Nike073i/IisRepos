@@ -10,6 +10,6 @@ TARGET_LABEL = 'price_label'
 
 
 # Параметры логистической регрессии
-REGRESSIO_RS = 0
+REGRESSION_RS = 0
 TRAIN_TS = 0.01
 TRAIN_RS = 0
