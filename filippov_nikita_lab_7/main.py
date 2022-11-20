@@ -1,5 +1,3 @@
-import sys
-
 import numpy as np
 from keras.callbacks import ModelCheckpoint
 from keras.layers import Dense
@@ -41,9 +39,9 @@ def create_model(x, y):
     m_model.add(Dropout(0.2))
     m_model.add(Dense(y.shape[1], activation='softmax'))
 
-    # model.load_weights ("")
+    m_model.load_weights ("weights-improvement=10-1.913465.hdf5")
     m_model.compile(loss='categorical_crossentropy', optimizer='adam')
-    m_model.fit(x, y, epochs=100, batch_size=128, callbacks=callbacks_list, verbose=1)
+    # m_model.fit(x, y, epochs=100, batch_size=128, callbacks=callbacks_list, verbose=1)
     return m_model
 
 
@@ -66,21 +64,19 @@ y_data = np_utils.to_categorical(y_data)
 
 model = create_model(X, y_data)
 
-start = np.random.randint(0, len(x_data) - 1)
-pattern = x_data[start]
-
-print("Seed:")
-print("\"", ''.join(int_to_char[value] for value in pattern), "\"")
-print("==========================")
-
-for i in range(1000):
-    x = np.reshape(pattern, (1, len(pattern), 1))
-    x = x / float(vocab_size)
-    predication = model.predict(x, verbose=0)
-    index = np.argmax(predication)
-    result = int_to_char[index]
-    seq_in = [int_to_char[value] for value in pattern]
-    sys.stdout.write(result)
-    pattern.append(index)
-    pattern = pattern[1:len(pattern)]
-print("\nДон.")
+for i in range(10):
+    generation = ""
+    start = np.random.randint(0, len(x_data) - 1)
+    pattern = x_data[start]
+    print("С - " + str(i) + " " + "*\"", ''.join(int_to_char[value] for value in pattern), "\"*")
+    for j in range(40):
+        x = np.reshape(pattern, (1, len(pattern), 1))
+        x = x / float(vocab_size)
+        predication = model.predict(x, verbose=0)
+        index = np.argmax(predication)
+        result = int_to_char[index]
+        seq_in = [int_to_char[value] for value in pattern]
+        generation = generation + result
+        pattern.append(index)
+        pattern = pattern[1:len(pattern)]
+    print("Г - " + generation)
