@@ -22,8 +22,6 @@ if __name__ == "__main__":
     prepared_data = prepare_data(cars_data)
     lineage_matrix = cluster_analysis(prepared_data, CLUSTERING_METHOD)
     print_dendrogram(lineage_matrix)
+    print(lineage_matrix)
+    print(len(lineage_matrix))
     plt.show()
-
-
-# Задача анализа количества страховых предложений, основываясь на годе производства автообиля и его пробеге
-# (Выявление оптимального числа страховых предложений)

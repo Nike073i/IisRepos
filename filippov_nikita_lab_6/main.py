@@ -17,10 +17,7 @@ def read_data(file_path, required_columns, n_rows):
 
 def prepare_data(data):
     # Генерация меток для цены
-    # Рассчет медианного значения цены автомобиля
-    cut_of_price = data['price'].mean()
-    # cut_of_price = data['price'].median()
-    # cut_of_price = 1000000
+    cut_of_price = data['price'].median()
     price_classes = dict(zip([0, 1], [cut_of_price, sys.maxsize]))
 
     labels = []
@@ -33,8 +30,9 @@ def prepare_data(data):
 
     data['price_label'] = labels
 
-    print(labels.count(0))
-    print(labels.count(1))
+    # Нормализация значений пробега
+    minmax = MinMaxScaler()
+    data[['mileage']] = minmax.fit_transform(data[['mileage']])
 
     return data
 
@@ -55,10 +53,6 @@ def best_prepare_data(data):
 
     data['year_label'] = year_labels
 
-    # Нормализация значений пробега
-    minmax = MinMaxScaler()
-    data[['mileage']] = minmax.fit_transform(data[['mileage']])
-
     return data
 
 
@@ -67,8 +61,9 @@ def mlp_classifier(X, y):
     model = MLPClassifier(random_state=MLP_RS, hidden_layer_sizes=HIDDEN_LAYER_SIZES, max_iter=MAX_ITER)
     model.fit(x_train, y_train)
     model_score = model.score(x_test, y_test)
-    # accuracy = accuracy_score(y_test, model.predict(x_test)) для потверждения, что оценка через score верна
     print(model_score)
+
+    # accuracy = accuracy_score(y_test, model.predict(x_test)) для потверждения, что оценка через score верна
     # print(accuracy)
 
 

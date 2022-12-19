@@ -16,25 +16,14 @@ def read_data(file_path, required_columns, n_rows):
     return required_data.dropna()
 
 
-def prepare_data_new(data):
-    # надо еще в отчет добавить по среднему значению, и константному значению в 1кк
-    # Рассчет медианного значения цены автомобиля
+def prepare_data(data):
+    #cut_of_price = data[TARGET_COLUMN].median()
+    cut_of_price = data[TARGET_COLUMN].mean()
 
-    median_price = data[TARGET_COLUMN].median()
-    price_classes = dict(zip([0, 1], [median_price, sys.maxsize]))
+    # Расчет медианного значения цены автомобиля
 
-    # Генерация меток для года
-    year_labels = []
-
-    year_classes = dict(zip([0, 1, 2, 3, 4], [1990, 2000, 2010, 2020, 2022]))
-
-    for year in data['year']:
-        for label, max_year in year_classes.items():
-            if year < max_year:
-                year_labels.append(label)
-                break
-
-    data['year_label'] = year_labels
+    # cut_of_price = 1000000
+    price_classes = dict(zip([0, 1], [cut_of_price, sys.maxsize]))
 
     # Генерация меток для цены
     labels = []
@@ -50,6 +39,25 @@ def prepare_data_new(data):
     # Нормализация значений пробега
     minmax = MinMaxScaler()
     data[['mileage']] = minmax.fit_transform(data[['mileage']])
+
+    return data
+
+
+def best_prepare_data(data):
+    prepare_data(data)
+
+    # Генерация меток для года
+    year_labels = []
+
+    year_classes = dict(zip([0, 1, 2, 3, 4], [1990, 2000, 2010, 2020, 2022]))
+
+    for year in data['year']:
+        for label, max_year in year_classes.items():
+            if year < max_year:
+                year_labels.append(label)
+                break
+
+    data['year_label'] = year_labels
 
     return data
 
@@ -85,8 +93,14 @@ def logic_regression(X, y):
 
 if __name__ == "__main__":
     cars_data = read_data(FILE_PATH, FEATURE_COLUMNS + [TARGET_COLUMN], DATA_N_ROWS)
-    prepared_data = prepare_data_new(cars_data)
-    logic_regression(prepared_data[['mileage', 'year_label']], prepared_data[TARGET_LABEL])
+
+    # prepared_data = prepare_data(cars_data)
+    # feature_columns = FEATURE_COLUMNS
+
+    prepared_data = best_prepare_data(cars_data)
+    feature_columns = ['year_label', 'mileage']
+
+    logic_regression(prepared_data[feature_columns], prepared_data[TARGET_LABEL])
 
 
 # Задача прогнозирования класса стоимости а/м-ля (Премиум, бюджетные) по пробегу и году выпуска
